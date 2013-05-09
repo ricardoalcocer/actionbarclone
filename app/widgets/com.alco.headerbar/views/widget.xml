@@ -1,0 +1,21 @@
+<Alloy>
+	<View id="headerbar" platform="android">
+		<View id="backbutton">
+			<View id="backangle"/>
+			<View id="appicon"/>
+		</View>
+		<Label id="headertitle">I'm the default widget</Label>
+		<View id="extraButtons">
+			<View class="tbbutton">
+				<ImageView image="/ic_menu_copy_holo_light.png" height="35dp" width="35dp" />
+			</View>
+			<View class="tbbutton">
+				<ImageView image="/ic_menu_share_holo_light.png" height="35dp" width="35dp" />
+			</View>
+			<View class="tbbutton">
+				<ImageView id="inflater" height="35dp" width="35dp" />
+			</View>
+		</View>
+	</View>
+	<View id="bottomline" platform="android"/>
+</Alloy>

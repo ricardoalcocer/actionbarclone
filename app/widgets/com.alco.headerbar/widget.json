@@ -1,0 +1,13 @@
+{
+	"id": "com.alco.headerbar",
+	"name": "headerbar",
+	"description" : "Simulates some features of the Android Action Bar.  Supports changing colors, fonts, titles, etc.",
+	"author": "",
+	"version": "1.0",
+	"copyright":"Copyright (c) 2013",
+	"license":"Public Domain",
+	"min-alloy-version": "1.0",
+	"min-titanium-version":"2.1",
+	"tags":"",
+	"platforms":"android,ios,mobileweb"
+}

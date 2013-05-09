@@ -1,0 +1,5 @@
+<Alloy>
+	<Window class="container">
+		<Widget src="com.alco.headerbar" id="headerbar"/>
+	</Window>
+</Alloy>
