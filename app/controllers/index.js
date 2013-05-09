@@ -1,7 +1,3 @@
-function doClick(e) {  
-    alert($.label.text);
-}
-
 $.headerbar.setParentContainer($.index);
 $.headerbar.setBackground({
 	color:'#cacaca'

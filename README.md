@@ -35,6 +35,37 @@ $.headerbar.setBack(function(){
 });
 $.headerbar.hideBottomLine();
 $.headerbar.showAngle();
+$.headerbar.setExtraButtons({
+		visible:[
+			{
+				icon:'/ic_menu_copy_holo_light.png',
+				title: 'Copy',
+				action: function (){
+					alert('Copy');
+				}
+			},
+			{
+				icon:'/ic_menu_share_holo_light.png',
+				title: 'Share',
+				action: function (){
+					alert('Share');
+				}
+			}],
+		inflater:[
+			{
+				title: 'Some Action #1',
+				action: function (){
+					alert('action1');
+				}
+			},
+			{
+				title: 'Some Action #2',
+				action: function (){
+					alert('action2');
+				}
+			}]
+	});
+
 ```
 
 
