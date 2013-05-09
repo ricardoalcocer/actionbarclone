@@ -7,6 +7,8 @@ function Controller() {
     $.__views.index = Ti.UI.createWindow({
         backgroundColor: "white",
         layout: "vertical",
+        exitOnClose: true,
+        navBarHidden: true,
         id: "index"
     });
     $.__views.index && $.addTopLevelView($.__views.index);
@@ -28,10 +30,36 @@ function Controller() {
         color: "#000"
     });
     $.headerbar.setBack(function() {
-        $.browsefolder.close();
+        $.index.close();
     });
     $.headerbar.hideBottomLine();
     $.headerbar.showAngle();
+    $.headerbar.setExtraButtons({
+        visible: [ {
+            icon: "/ic_menu_copy_holo_light.png",
+            title: "Copy",
+            action: function() {
+                alert("Copy");
+            }
+        }, {
+            icon: "/ic_menu_share_holo_light.png",
+            title: "Share",
+            action: function() {
+                alert("Share");
+            }
+        } ],
+        inflater: [ {
+            title: "Some Action #1",
+            action: function() {
+                alert("action1");
+            }
+        }, {
+            title: "Some Action #2",
+            action: function() {
+                alert("action2");
+            }
+        } ]
+    });
     $.index.open();
     _.extend($, exports);
 }

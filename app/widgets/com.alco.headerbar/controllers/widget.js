@@ -2,7 +2,7 @@ var backAction=null;
 var extraButtonAction=null;
 var parentWindow=null;
 
-$.inflater.backgroundImage=WPATH('ic_menu_moreoverflow_normal_holo_light.png');
+//$.inflater.backgroundImage=WPATH('ic_menu_moreoverflow_normal_holo_light.png');
 
 $.headerbar.addEventListener('click',function(evt){
 	// this cancels the click event that get's fired 
@@ -33,11 +33,6 @@ function setTitle(args){
 function setBack(action){
 	backAction=action;
 }
-
-/*function setExtraButtonAction(action){
-	extraButtonAction=action;
-	$.extraButton.addEventListener('click',extraButtonAction);
-}*/
 
 function setBlackAngle(){
 	$.backangle.backgroundImage=WPATH('black-back-angle.png');
@@ -84,37 +79,40 @@ function hideBottomLine(){
 	$.bottomline.visible=false;
 }
 
-/*
-function showExtraButton(){
-	//$.extraButton.borderWidth=1;
-	//$.extraButton.borderColor='#000';
-	$.extraButton.backgroundColor='red';
-	$.extraButton.width='80dp'
-	$.extraButton.height="50dp",
-	$.extraButtonText.visible=true;
-	//$.extraButton.addEventListener('click',extraButtonAction);
-}
-
-function hideExtraButton(){
-	$.extraButton.width=0;
-	$.extraButton.height=0
-	$.extraButton.borderWidth=0;
-	$.extraButton.borderColor='transparent'
-	$.extraButton.backgroundColor='transparent'
-	$.extraButtonText.visible=false;
-	//$.extraButton.removeEventListener('click',extraButtonAction);
-}
-*/
-
 function setTop(top){
 	this.headerbar.top=top;
 }
 
+function setExtraButtons(args){
+	args.visible.forEach(function(button){
+		var payload={
+			image:button.icon
+		}
+		var tbbutton=Widget.createController('button',payload).getView();
+		//console.log(JSON.stringify(tbbutton));
+		tbbutton.addEventListener('click',button.action);
+		$.extraButtons.add(tbbutton);
+	})
+
+	if (args.inflater){
+		var menuoptions='';
+		var payload={
+			image: WPATH('ic_menu_moreoverflow_normal_holo_light.png')
+		}
+		var inflater=Widget.createController('button',payload).getView();
+		args.inflater.forEach(function(button){
+			menuoptions+=button.title
+		});
+		inflater.addEventListener('click',function(e){
+			alert(menuoptions);
+		});
+		$.extraButtons.add(inflater);
+	}
+}
+
 //
 exports.setTop=setTop;
-//exports.setExtraButtonAction=setExtraButtonAction;
-//exports.showExtraButton=showExtraButton;
-//exports.hideExtraButton=hideExtraButton;
+exports.setExtraButtons=setExtraButtons;
 exports.showBottomLine=showBottomLine;
 exports.hideBottomLine=hideBottomLine;
 exports.setBackground=setBackground;

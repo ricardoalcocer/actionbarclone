@@ -1,0 +1,5 @@
+<Alloy>
+	<View id="tbbutton" class="tbbutton">
+		<ImageView id="tbbuttonimage" image="/ic_menu_copy_holo_light.png" height="35dp" width="35dp" />
+	</View>
+</Alloy>

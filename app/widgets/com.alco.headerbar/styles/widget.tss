@@ -45,10 +45,6 @@
 	visible: true,
 	layout: "horizontal"
 },
-".tbbutton":{
-	height: "50dp",
-	width: "50dp"
-}
 "#inflater":{
 	image: "/inflater.png"
 }

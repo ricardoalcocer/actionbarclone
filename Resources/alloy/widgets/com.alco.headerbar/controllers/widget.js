@@ -44,7 +44,31 @@ function Controller() {
     function setTop(top) {
         this.headerbar.top = top;
     }
-    new (require("alloy/widget"))("com.alco.headerbar");
+    function setExtraButtons(args) {
+        args.visible.forEach(function(button) {
+            var payload = {
+                image: button.icon
+            };
+            var tbbutton = Widget.createController("button", payload).getView();
+            tbbutton.addEventListener("click", button.action);
+            $.extraButtons.add(tbbutton);
+        });
+        if (args.inflater) {
+            var menuoptions = "";
+            var payload = {
+                image: WPATH("ic_menu_moreoverflow_normal_holo_light.png")
+            };
+            var inflater = Widget.createController("button", payload).getView();
+            args.inflater.forEach(function(button) {
+                menuoptions += button.title;
+            });
+            inflater.addEventListener("click", function() {
+                alert(menuoptions);
+            });
+            $.extraButtons.add(inflater);
+        }
+    }
+    var Widget = new (require("alloy/widget"))("com.alco.headerbar");
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
     arguments[0] ? arguments[0]["__parentSymbol"] : null;
     arguments[0] ? arguments[0]["$model"] : null;
@@ -103,45 +127,6 @@ function Controller() {
         id: "extraButtons"
     });
     $.__views.headerbar.add($.__views.extraButtons);
-    $.__views.__alloyId0 = Ti.UI.createView({
-        height: "50dp",
-        width: "50dp",
-        id: "__alloyId0"
-    });
-    $.__views.extraButtons.add($.__views.__alloyId0);
-    $.__views.__alloyId1 = Ti.UI.createImageView({
-        image: "/ic_menu_copy_holo_light.png",
-        height: "35dp",
-        width: "35dp",
-        id: "__alloyId1"
-    });
-    $.__views.__alloyId0.add($.__views.__alloyId1);
-    $.__views.__alloyId2 = Ti.UI.createView({
-        height: "50dp",
-        width: "50dp",
-        id: "__alloyId2"
-    });
-    $.__views.extraButtons.add($.__views.__alloyId2);
-    $.__views.__alloyId3 = Ti.UI.createImageView({
-        image: "/ic_menu_share_holo_light.png",
-        height: "35dp",
-        width: "35dp",
-        id: "__alloyId3"
-    });
-    $.__views.__alloyId2.add($.__views.__alloyId3);
-    $.__views.__alloyId4 = Ti.UI.createView({
-        height: "50dp",
-        width: "50dp",
-        id: "__alloyId4"
-    });
-    $.__views.extraButtons.add($.__views.__alloyId4);
-    $.__views.inflater = Ti.UI.createImageView({
-        image: "/inflater.png",
-        id: "inflater",
-        height: "35dp",
-        width: "35dp"
-    });
-    $.__views.__alloyId4.add($.__views.inflater);
     $.__views.bottomline = Ti.UI.createView({
         height: "2dp",
         width: Ti.UI.FILL,
@@ -154,7 +139,6 @@ function Controller() {
     _.extend($, $.__views);
     var backAction = null;
     var parentWindow = null;
-    $.inflater.backgroundImage = WPATH("ic_menu_moreoverflow_normal_holo_light.png");
     $.headerbar.addEventListener("click", function(evt) {
         evt.cancelBubble = true;
     });
@@ -171,6 +155,7 @@ function Controller() {
         null === backAction ? parentWindow.close() : backAction();
     });
     exports.setTop = setTop;
+    exports.setExtraButtons = setExtraButtons;
     exports.showBottomLine = showBottomLine;
     exports.hideBottomLine = hideBottomLine;
     exports.setBackground = setBackground;
