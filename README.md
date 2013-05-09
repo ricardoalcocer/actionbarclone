@@ -8,7 +8,7 @@ This widget for the Appcelerator Titanium Alloy MVC framework emulates Android's
 
 Starting on Android 4.0, a new navigation paradigm has been introduced for Android Devices, in which a bar is provided on the top of each screen, from which you can access "Menu Items" represented as icons.
 
-Although you can access Android's native ActionBar from Titanium, you still need a way to target pre 4.0 devices.  This Widget provides an easy way of ensuring that your Android App remains true to Android's usability guidelines regardless of the Android version.
+Although you can access [Android's native ActionBar from Titanium](https://gist.github.com/ricardoalcocer/5339699), you still need a way to target pre 4.0 devices.  This Widget provides an easy way of ensuring that your Android App remains true to Android's usability guidelines regardless of the Android version.
 
 ## Usage
 
