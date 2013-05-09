@@ -82,8 +82,7 @@ $.headerbar.setExtraButtons({
 
 ## To-do 
 
-* Currently buttons are hardcoded.  Provide a way of specifying buttons to include
-* Implement "Inflater" which will open a view with additional options
+* Implement menu that will open when the "inflater" is clicked
 
 
 ## Licenses
