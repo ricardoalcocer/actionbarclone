@@ -27,7 +27,7 @@ function Controller() {
     $.headerbar.setBlackAngle();
     $.headerbar.setTitle({
         text: "Window Title",
-        color: "#000"
+        color: "#6f6f6f"
     });
     $.headerbar.setBack(function() {
         $.index.close();

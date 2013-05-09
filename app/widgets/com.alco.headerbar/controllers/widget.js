@@ -35,7 +35,7 @@ function setBack(action){
 }
 
 function setBlackAngle(){
-	$.backangle.backgroundImage=WPATH('black-back-angle.png');
+	$.backangle.backgroundImage=WPATH('light-back-angle.png');
 }
 
 function setWhiteAngle(){

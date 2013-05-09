@@ -1,3 +1,10 @@
+// setTheme will automatically set:
+// setBlackAngle or setWhiteAngle
+// setBackground
+// setTitleColor 
+//$.headerbar.setTheme('black'); 
+
+
 $.headerbar.setParentContainer($.index);
 $.headerbar.setBackground({
 	color:'#cacaca'
@@ -6,7 +13,7 @@ $.headerbar.setAppIcon('/appicon.png');
 $.headerbar.setBlackAngle();
 $.headerbar.setTitle({
 	text:'Window Title',
-	color:'#000'
+	color:'#6f6f6f'
 });
 $.headerbar.setBack(function(){
 	$.index.close();

@@ -13,7 +13,7 @@ function Controller() {
         backAction = action;
     }
     function setBlackAngle() {
-        $.backangle.backgroundImage = WPATH("black-back-angle.png");
+        $.backangle.backgroundImage = WPATH("light-back-angle.png");
     }
     function setWhiteAngle() {
         $.backangle.backgroundImage = WPATH("white-back-angle.png");

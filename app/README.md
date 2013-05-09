@@ -6,9 +6,12 @@
 
 This widget for the Appcelerator Titanium Alloy MVC framework emulates Android's ActionBar.
 
-Starting on Android 4.0, a new navigation paradigm has been introduced for Android Devices, in which a bar is provided on the top of each screen, from which you can access "Menu Items" represented as icons.
+->![](http://developer.android.com/images/ui/actionbar-stacked.png)<-
 
-Although you can access [Android's native ActionBar from Titanium](https://gist.github.com/ricardoalcocer/5339699), you still need a way to target pre 4.0 devices.  This Widget provides an easy way of ensuring that your Android App remains true to Android's usability guidelines regardless of the Android version.
+->**ActionBar example**<-
+
+Although you can access [Android's native ActionBar from Titanium](https://gist.github.com/ricardoalcocer/5339699), you still need a way to target pre 4.0 devices.  This Widget provides an easy way of ensuring that your Android App remains true to Android's usability guidelines regardless of the Android version, and providing easy-to-use theming capabilities to match your App's UI.
+
 
 ## Usage
 
@@ -71,14 +74,36 @@ $.headerbar.setExtraButtons({
 
 ## Screenshots
 
-**Portrait View**
+->**Portrait View - Android 4.2**<-
 
-![](http://s23.postimg.org/vppob5nxn/Screen_Shot_2013_05_09_at_10_11_24_AM.png)
+->![](http://s8.postimg.org/80c6y36id/Screen_Shot_2013_05_09_at_3_07_37_PM.png)<-
 
-**Landscape View**
+->**Landscape View - Android 4.2**<-
 
-![](http://s17.postimg.org/wcr99ll6n/Screen_Shot_2013_05_09_at_10_11_40_AM.png)
+->![](http://s21.postimg.org/jqpabwhuf/Screen_Shot_2013_05_09_at_3_08_01_PM.png)<-
 
+->**Landscape View - Android 4.2 Tablet**<-
+
+->![](http://s10.postimg.org/3yva8lt09/Screen_Shot_2013_05_09_at_3_16_36_PM.png)<-
+
+->**Portrait View - Android 2.2**<-
+
+->![](http://s23.postimg.org/r7n0arfxn/Screen_Shot_2013_05_09_at_3_13_48_PM.png)<-
+
+
+## Tips
+
+You can set your tiapp.xml to use Android's native Holo theme using the following syntax
+
+```
+<android xmlns:android="http://schemas.android.com/apk/res/android">
+	<tool-api-level>14</tool-api-level>
+	<manifest>
+		<application android:theme="@android:style/Theme.Holo.Light"></application>
+		<!-- You could also use @android:style/Theme.Holo -->
+	</manifest>
+</android>
+```
 
 ## To-do 
 
