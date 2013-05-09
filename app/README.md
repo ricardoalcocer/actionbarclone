@@ -6,9 +6,9 @@
 
 This widget for the Appcelerator Titanium Alloy MVC framework emulates Android's ActionBar.
 
-->![](http://developer.android.com/images/ui/actionbar-stacked.png)<-
+![](http://developer.android.com/images/ui/actionbar-stacked.png)
 
-->**ActionBar example**<-
+**ActionBar example**
 
 Although you can access [Android's native ActionBar from Titanium](https://gist.github.com/ricardoalcocer/5339699), you still need a way to target pre 4.0 devices.  This Widget provides an easy way of ensuring that your Android App remains true to Android's usability guidelines regardless of the Android version, and providing easy-to-use theming capabilities to match your App's UI.
 
@@ -74,21 +74,21 @@ $.headerbar.setExtraButtons({
 
 ## Screenshots
 
-->**Portrait View - Android 4.2**<-
+**Portrait View - Android 4.2**
 
-->![](http://s8.postimg.org/80c6y36id/Screen_Shot_2013_05_09_at_3_07_37_PM.png)<-
+![](http://s8.postimg.org/80c6y36id/Screen_Shot_2013_05_09_at_3_07_37_PM.png)
 
-->**Landscape View - Android 4.2**<-
+**Landscape View - Android 4.2**
 
-->![](http://s21.postimg.org/jqpabwhuf/Screen_Shot_2013_05_09_at_3_08_01_PM.png)<-
+![](http://s21.postimg.org/jqpabwhuf/Screen_Shot_2013_05_09_at_3_08_01_PM.png)
 
-->**Landscape View - Android 4.2 Tablet**<-
+**Landscape View - Android 4.2 Tablet**
 
-->![](http://s10.postimg.org/3yva8lt09/Screen_Shot_2013_05_09_at_3_16_36_PM.png)<-
+![](http://s10.postimg.org/3yva8lt09/Screen_Shot_2013_05_09_at_3_16_36_PM.png)
 
-->**Portrait View - Android 2.2**<-
+**Portrait View - Android 2.2**
 
-->![](http://s23.postimg.org/r7n0arfxn/Screen_Shot_2013_05_09_at_3_13_48_PM.png)<-
+![](http://s23.postimg.org/r7n0arfxn/Screen_Shot_2013_05_09_at_3_13_48_PM.png)
 
 
 ## Tips
