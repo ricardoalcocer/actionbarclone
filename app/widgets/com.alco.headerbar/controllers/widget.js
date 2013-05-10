@@ -2,7 +2,10 @@ var backAction=null;
 var extraButtonAction=null;
 var parentWindow=null;
 
-//$.inflater.backgroundImage=WPATH('ic_menu_moreoverflow_normal_holo_light.png');
+function openInflater(evt){
+	// need to code this part
+	alert('Open the Inflater');
+}
 
 $.headerbar.addEventListener('click',function(evt){
 	// this cancels the click event that get's fired 
@@ -22,7 +25,7 @@ $.backbutton.addEventListener('touchstart',function(evt){
 $.backbutton.addEventListener('touchend',function(evt){
 	this.backgroundColor='transparent';
 	this.opacity=1;
-	(backAction===null)?parentWindow.close():backAction();
+	(!backAction)?parentWindow.close():backAction();
 });
 
 function setTitle(args){
@@ -84,15 +87,17 @@ function setTop(top){
 }
 
 function setExtraButtons(args){
-	args.visible.forEach(function(button){
-		var payload={
-			image:button.icon
-		}
-		var tbbutton=Widget.createController('button',payload).getView();
-		//console.log(JSON.stringify(tbbutton));
-		tbbutton.addEventListener('click',button.action);
-		$.extraButtons.add(tbbutton);
-	})
+	if (args.visible){
+		args.visible.forEach(function(button){
+			var payload={
+				image:button.icon
+			}
+			var tbbutton=Widget.createController('button',payload).getView();
+			
+			tbbutton.addEventListener('click',button.action);
+			$.extraButtons.add(tbbutton);
+		})
+	}
 
 	if (args.inflater){
 		var menuoptions='';
@@ -101,15 +106,26 @@ function setExtraButtons(args){
 		}
 		var inflater=Widget.createController('button',payload).getView();
 		args.inflater.forEach(function(button){
+			// here I gather all the menu options and build a dropdown menu
 			menuoptions+=button.title
 		});
-		inflater.addEventListener('click',function(e){
-			alert(menuoptions);
-		});
+		inflater.addEventListener('click',openInflater);
+			
 		$.extraButtons.add(inflater);
 	}
-}
 
+	if (args.androidmenu){
+		parentWindow.activity.onCreateOptionsMenu = function(e){
+			var menu = e.menu;
+			args.androidmenu.forEach(function(button){
+				var menuItem = menu.add({ 
+					title: button.title
+				});
+				menuItem.addEventListener("click", button.action);
+			})
+		}
+	}
+}
 //
 exports.setTop=setTop;
 exports.setExtraButtons=setExtraButtons;

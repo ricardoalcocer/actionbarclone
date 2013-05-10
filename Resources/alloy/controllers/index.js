@@ -58,6 +58,22 @@ function Controller() {
             action: function() {
                 alert("action2");
             }
+        } ],
+        androidmenu: [ {
+            title: "Settings",
+            action: function() {
+                alert("Settings");
+            }
+        }, {
+            title: "Help",
+            action: function() {
+                alert("Help");
+            }
+        }, {
+            title: "About",
+            action: function() {
+                alert("About");
+            }
         } ]
     });
     $.index.open();

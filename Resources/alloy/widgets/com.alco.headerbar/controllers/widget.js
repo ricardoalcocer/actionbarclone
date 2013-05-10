@@ -5,6 +5,9 @@ function WPATH(s) {
 }
 
 function Controller() {
+    function openInflater() {
+        alert("Open the Inflater");
+    }
     function setTitle(args) {
         $.headertitle.text = args.text;
         $.headertitle.color = args.color;
@@ -45,7 +48,7 @@ function Controller() {
         this.headerbar.top = top;
     }
     function setExtraButtons(args) {
-        args.visible.forEach(function(button) {
+        args.visible && args.visible.forEach(function(button) {
             var payload = {
                 image: button.icon
             };
@@ -62,11 +65,18 @@ function Controller() {
             args.inflater.forEach(function(button) {
                 menuoptions += button.title;
             });
-            inflater.addEventListener("click", function() {
-                alert(menuoptions);
-            });
+            inflater.addEventListener("click", openInflater);
             $.extraButtons.add(inflater);
         }
+        args.androidmenu && (parentWindow.activity.onCreateOptionsMenu = function(e) {
+            var menu = e.menu;
+            args.androidmenu.forEach(function(button) {
+                var menuItem = menu.add({
+                    title: button.title
+                });
+                menuItem.addEventListener("click", button.action);
+            });
+        });
     }
     var Widget = new (require("alloy/widget"))("com.alco.headerbar");
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
@@ -152,7 +162,7 @@ function Controller() {
     $.backbutton.addEventListener("touchend", function() {
         this.backgroundColor = "transparent";
         this.opacity = 1;
-        null === backAction ? parentWindow.close() : backAction();
+        backAction ? backAction() : parentWindow.close();
     });
     exports.setTop = setTop;
     exports.setExtraButtons = setExtraButtons;
