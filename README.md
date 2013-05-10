@@ -73,19 +73,19 @@ $.headerbar.setExtraButtons({
 
 ## Screenshots
 
-**Portrait View - Android 4.2**
+###**Portrait View - Android 4.2**
 
 ![](http://s8.postimg.org/80c6y36id/Screen_Shot_2013_05_09_at_3_07_37_PM.png)
 
-**Landscape View - Android 4.2**
+###**Landscape View - Android 4.2**
 
 ![](http://s21.postimg.org/jqpabwhuf/Screen_Shot_2013_05_09_at_3_08_01_PM.png)
 
-**Landscape View - Android 4.2 Tablet**
+###**Landscape View - Android 4.2 Tablet**
 
 ![](http://s10.postimg.org/3yva8lt09/Screen_Shot_2013_05_09_at_3_16_36_PM.png)
 
-**Portrait View - Android 2.2**
+###**Portrait View - Android 2.2**
 
 ![](http://s23.postimg.org/r7n0arfxn/Screen_Shot_2013_05_09_at_3_13_48_PM.png)
 
@@ -113,6 +113,7 @@ Titanium does not expose some other important Android UI patterns, such as the [
 ## To-do 
 
 * Implement menu that will open when the "inflater" is clicked
+* Add pre-defined Light and Dark themes to match Android Holo
 
 
 ## Licenses
