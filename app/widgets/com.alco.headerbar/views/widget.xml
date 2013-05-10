@@ -5,7 +5,7 @@
 			<View id="appicon"/>
 		</View>
 		<Label id="headertitle">I'm the default widget</Label>
-		<View id="extraButtons"></View>
+		<View id="actionButtons"></View>
 	</View>
 	<View id="bottomline" platform="android"/>
 </Alloy>

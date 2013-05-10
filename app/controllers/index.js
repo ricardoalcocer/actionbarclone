@@ -4,23 +4,31 @@
 // setTitleColor 
 //$.headerbar.setTheme('black'); 
 
-
-$.headerbar.setParentContainer($.index);
-$.headerbar.setBackground({
+// Start Configuration
+$.headerbar.setParentContainer($.index);			// a reference to the window containing the widget
+$.headerbar.setBackground({							// background color of the bar
 	color:'#cacaca'
 });
-$.headerbar.setAppIcon('/appicon.png');
-$.headerbar.setBlackAngle();
-$.headerbar.setTitle({
+//$.headerbar.setAppIcon('/appiconcopy.png'); 		// if no icon is povided, the apps default one will be used
+$.headerbar.setBlackAngle();						// color of the angle
+$.headerbar.setTitle({								// the title of the containing window
 	text:'Window Title',
 	color:'#6f6f6f'
 });
-$.headerbar.setBack(function(){
+$.headerbar.setBack(function(){						// if angle is shown, what will happen uppon click.  Default to closing containing window
 	$.index.close();
 });
-$.headerbar.hideBottomLine();
-$.headerbar.showAngle();
-$.headerbar.setExtraButtons({
+$.headerbar.hideBottomLine();						// for Holo Dark
+$.headerbar.showAngle();							// show or hide
+$.headerbar.setActionButtons(getExtraButtons());		// action buttons, inflater buttons and menu buttons
+// End Configuration
+
+
+// For clarity, I'm using a function to get the Buttons Object
+// In a cross-platform scenario you'd want to have your menu options returned
+// by a function so you can then decide where and how display them
+function getExtraButtons(){
+	return {
 		visible:[
 			{
 				icon:'/ic_menu_copy_holo_light.png',
@@ -69,6 +77,7 @@ $.headerbar.setExtraButtons({
 				}
 			}
 		]
-	});
+	}
+}
 
 $.index.open();

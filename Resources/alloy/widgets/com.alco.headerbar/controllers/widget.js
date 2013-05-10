@@ -28,7 +28,7 @@ function Controller() {
         $.backangle.visible = true;
     }
     function setAppIcon(icon) {
-        icon && ($.appicon.backgroundImage = icon);
+        $.appicon.backgroundImage = icon;
     }
     function setParentContainer(handle) {
         parentWindow = handle;
@@ -47,14 +47,14 @@ function Controller() {
     function setTop(top) {
         this.headerbar.top = top;
     }
-    function setExtraButtons(args) {
+    function setActionButtons(args) {
         args.visible && args.visible.forEach(function(button) {
             var payload = {
                 image: button.icon
             };
             var tbbutton = Widget.createController("button", payload).getView();
             tbbutton.addEventListener("click", button.action);
-            $.extraButtons.add(tbbutton);
+            $.actionButtons.add(tbbutton);
         });
         if (args.inflater) {
             var menuoptions = "";
@@ -66,7 +66,7 @@ function Controller() {
                 menuoptions += button.title;
             });
             inflater.addEventListener("click", openInflater);
-            $.extraButtons.add(inflater);
+            $.actionButtons.add(inflater);
         }
         args.androidmenu && (parentWindow.activity.onCreateOptionsMenu = function(e) {
             var menu = e.menu;
@@ -127,16 +127,16 @@ function Controller() {
         id: "headertitle"
     });
     $.__views.headerbar.add($.__views.headertitle);
-    $.__views.extraButtons = Ti.UI.createView({
+    $.__views.actionButtons = Ti.UI.createView({
         right: "0dp",
         width: Ti.UI.SIZE,
         height: "50dp",
         backgroundColor: "transparent",
         visible: true,
         layout: "horizontal",
-        id: "extraButtons"
+        id: "actionButtons"
     });
-    $.__views.headerbar.add($.__views.extraButtons);
+    $.__views.headerbar.add($.__views.actionButtons);
     $.__views.bottomline = Ti.UI.createView({
         height: "2dp",
         width: Ti.UI.FILL,
@@ -149,6 +149,7 @@ function Controller() {
     _.extend($, $.__views);
     var backAction = null;
     var parentWindow = null;
+    $.appicon.backgroundImage = "/appicon.png";
     $.headerbar.addEventListener("click", function(evt) {
         evt.cancelBubble = true;
     });
@@ -165,7 +166,7 @@ function Controller() {
         backAction ? backAction() : parentWindow.close();
     });
     exports.setTop = setTop;
-    exports.setExtraButtons = setExtraButtons;
+    exports.setActionButtons = setActionButtons;
     exports.showBottomLine = showBottomLine;
     exports.hideBottomLine = hideBottomLine;
     exports.setBackground = setBackground;

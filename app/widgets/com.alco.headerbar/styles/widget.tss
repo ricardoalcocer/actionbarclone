@@ -37,7 +37,7 @@
 	backgroundColor: "#0082AB",
 	bottom: "0"
 },
-"#extraButtons":{ // this button starts hidden
+"#actionButtons":{ // this button starts hidden
 	right: "0dp",
 	width: Ti.UI.SIZE,
 	height: "50dp",

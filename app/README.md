@@ -2,9 +2,7 @@
 
 ## Summary
 
-**This widget is a Work in progress.  It currently works with limited functionalities**
-
-This widget for the Appcelerator Titanium Alloy MVC framework emulates Android's ActionBar.  
+This widget for the Appcelerator Titanium Alloy MVC framework emulates Android's ActionBar.  This Widgets provide enough functinality to become a mini-framework to build Android Apps that are consistent with Android usability guidelines.
 
 ###Example of ActionBar
 
@@ -16,6 +14,29 @@ Although you can access [Android's native ActionBar from Titanium](https://gist.
 
 ## Usage
 
+### Features
+* Tested on Android 2.2 thru 4.2, both phones and tablets
+* Customizable icon
+* Customizable background
+* Customizable colors
+* Can add "Action icons", options that will display upon clicking the "inflater" icon, and regular Android menus.
+
+### Configuration options
+
+| Method | Arguments |
+| -------- | ---- | ------- |
+| **setParentContainer** | Pointer to the Window object |
+|**setBackground**|Dictionary with color property. Example: **{ color: '#000'}** |
+|**setBlackAngle**|-|
+|**setWhiteAngle**|-|
+|**showAngle**|-|
+|**hideAngle**|-|
+|**setTitle**|Dictionary with text and color properties.  Example: **{ text: 'My Window',color: '#fff'}**|
+|**setBack**|Instance of function to call when the back button is pressed.  Defaults to **window.close()**|
+|**hideBottomLine**|-|
+|**showBottomLine**|-|
+|**setActionButtons**|Object containing 3 arrays: visible, inflater and Android menu.  Each array holds menu options for each button in the following format: **{icon:'icon.png',title: 'Caption',action: callback}**|
+
 ### Adding to your XML View
 
 ```
@@ -24,22 +45,31 @@ Although you can access [Android's native ActionBar from Titanium](https://gist.
 ### Configuring in your controller
 
 ```
-$.headerbar.setParentContainer($.index);
-$.headerbar.setBackground({
+// Start Configuration
+$.headerbar.setParentContainer($.index);			// a reference to the window containing the widget
+$.headerbar.setBackground({							// background color of the bar
 	color:'#cacaca'
 });
-$.headerbar.setAppIcon('/appicon.png');
-$.headerbar.setBlackAngle();
-$.headerbar.setTitle({
+//$.headerbar.setAppIcon('/appiconcopy.png'); 		// if no icon is povided, the apps default one will be used
+$.headerbar.setBlackAngle();						// color of the angle
+$.headerbar.setTitle({								// the title of the containing window
 	text:'Window Title',
-	color:'#000'
+	color:'#6f6f6f'
 });
-$.headerbar.setBack(function(){
+$.headerbar.setBack(function(){						// if angle is shown, what will happen uppon click.  Default to closing containing window
 	$.index.close();
 });
-$.headerbar.hideBottomLine();
-$.headerbar.showAngle();
-$.headerbar.setExtraButtons({
+$.headerbar.hideBottomLine();						// for Holo Dark
+$.headerbar.showAngle();							// show or hide
+$.headerbar.setActionButtons(getExtraButtons());		// action buttons, inflater buttons and menu buttons
+// End Configuration
+
+
+// For clarity, I'm using a function to get the Buttons Object
+// In a cross-platform scenario you'd want to have your menu options returned
+// by a function so you can then decide where and how display them
+function getExtraButtons(){
+	return {
 		visible:[
 			{
 				icon:'/ic_menu_copy_holo_light.png',
@@ -88,8 +118,8 @@ $.headerbar.setExtraButtons({
 				}
 			}
 		]
-	});
-
+	}
+}
 ```
 
 

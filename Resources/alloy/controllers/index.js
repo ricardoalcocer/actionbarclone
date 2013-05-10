@@ -1,4 +1,48 @@
 function Controller() {
+    function getExtraButtons() {
+        return {
+            visible: [ {
+                icon: "/ic_menu_copy_holo_light.png",
+                title: "Copy",
+                action: function() {
+                    alert("Copy");
+                }
+            }, {
+                icon: "/ic_menu_share_holo_light.png",
+                title: "Share",
+                action: function() {
+                    alert("Share");
+                }
+            } ],
+            inflater: [ {
+                title: "Some Action #1",
+                action: function() {
+                    alert("action1");
+                }
+            }, {
+                title: "Some Action #2",
+                action: function() {
+                    alert("action2");
+                }
+            } ],
+            androidmenu: [ {
+                title: "Settings",
+                action: function() {
+                    alert("Settings");
+                }
+            }, {
+                title: "Help",
+                action: function() {
+                    alert("Help");
+                }
+            }, {
+                title: "About",
+                action: function() {
+                    alert("About");
+                }
+            } ]
+        };
+    }
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
     arguments[0] ? arguments[0]["__parentSymbol"] : null;
     arguments[0] ? arguments[0]["$model"] : null;
@@ -23,7 +67,6 @@ function Controller() {
     $.headerbar.setBackground({
         color: "#cacaca"
     });
-    $.headerbar.setAppIcon("/appicon.png");
     $.headerbar.setBlackAngle();
     $.headerbar.setTitle({
         text: "Window Title",
@@ -34,48 +77,7 @@ function Controller() {
     });
     $.headerbar.hideBottomLine();
     $.headerbar.showAngle();
-    $.headerbar.setExtraButtons({
-        visible: [ {
-            icon: "/ic_menu_copy_holo_light.png",
-            title: "Copy",
-            action: function() {
-                alert("Copy");
-            }
-        }, {
-            icon: "/ic_menu_share_holo_light.png",
-            title: "Share",
-            action: function() {
-                alert("Share");
-            }
-        } ],
-        inflater: [ {
-            title: "Some Action #1",
-            action: function() {
-                alert("action1");
-            }
-        }, {
-            title: "Some Action #2",
-            action: function() {
-                alert("action2");
-            }
-        } ],
-        androidmenu: [ {
-            title: "Settings",
-            action: function() {
-                alert("Settings");
-            }
-        }, {
-            title: "Help",
-            action: function() {
-                alert("Help");
-            }
-        }, {
-            title: "About",
-            action: function() {
-                alert("About");
-            }
-        } ]
-    });
+    $.headerbar.setActionButtons(getExtraButtons());
     $.index.open();
     _.extend($, exports);
 }

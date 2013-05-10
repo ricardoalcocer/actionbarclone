@@ -2,6 +2,9 @@ var backAction=null;
 var extraButtonAction=null;
 var parentWindow=null;
 
+// set default app icon, in case no icon is provided
+$.appicon.backgroundImage='/appicon.png'	
+
 function openInflater(evt){
 	// need to code this part
 	alert('Open the Inflater');
@@ -56,12 +59,7 @@ function showAngle(){
 }
 
 function setAppIcon(icon){
-	if (!icon){
-		// hopefully I can find a way of getting the appicon
-		//$.appicon.backgroundImage='/android/appicon.png'	
-	}else{
-		$.appicon.backgroundImage=icon;	
-	}	
+	$.appicon.backgroundImage=icon;	
 }
 
 function setParentContainer(handle){
@@ -86,7 +84,7 @@ function setTop(top){
 	this.headerbar.top=top;
 }
 
-function setExtraButtons(args){
+function setActionButtons(args){
 	if (args.visible){
 		args.visible.forEach(function(button){
 			var payload={
@@ -95,7 +93,7 @@ function setExtraButtons(args){
 			var tbbutton=Widget.createController('button',payload).getView();
 			
 			tbbutton.addEventListener('click',button.action);
-			$.extraButtons.add(tbbutton);
+			$.actionButtons.add(tbbutton);
 		})
 	}
 
@@ -111,7 +109,7 @@ function setExtraButtons(args){
 		});
 		inflater.addEventListener('click',openInflater);
 			
-		$.extraButtons.add(inflater);
+		$.actionButtons.add(inflater);
 	}
 
 	if (args.androidmenu){
@@ -128,7 +126,7 @@ function setExtraButtons(args){
 }
 //
 exports.setTop=setTop;
-exports.setExtraButtons=setExtraButtons;
+exports.setActionButtons=setActionButtons;
 exports.showBottomLine=showBottomLine;
 exports.hideBottomLine=hideBottomLine;
 exports.setBackground=setBackground;
