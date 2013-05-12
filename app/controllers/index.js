@@ -15,9 +15,10 @@ $.headerbar.setTitle({								// the title of the containing window
 	text:'Window Title',
 	color:'#6f6f6f'
 });
-$.headerbar.setBack(function(){						// if angle is shown, what will happen uppon click.  Default to closing containing window
-	$.index.close();
+$.headerbar.setBack(function(){						// if angle is shown, what will happen uppon click.  If don't want the button to do anything, send empty function
+	alert('Clicked home');
 });
+
 $.headerbar.hideBottomLine();						// for Holo Dark
 $.headerbar.showAngle();							// show or hide
 $.headerbar.setActionButtons(getExtraButtons());		// action buttons, inflater buttons and menu buttons

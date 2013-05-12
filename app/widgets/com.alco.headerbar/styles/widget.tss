@@ -9,7 +9,7 @@
 	color: '#000',
 	font: {
 		fontSize: "16dp",
-		fontWeight: "bold"
+		fontFamily: "Roboto-Thin"
 	},
 	height: Ti.UI.SIZE,
 	width: Ti.UI.SIZE

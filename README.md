@@ -58,7 +58,7 @@ Although you can access [Android's native ActionBar from Titanium](https://gist.
 	</tr>
 	<tr>
 		<td><b>setBack</b></td>
-		<td>Instance of function to call when the back button is pressed.  Defaults to <b>window.close()</b></td>
+		<td>Instance of function to call when the back button is pressed.  If you want the button not to do anything, simply don't call this method.</td>
 	</tr>
 	<tr>
 		<td><b>hideBottomLine</b></td>
@@ -70,7 +70,7 @@ Although you can access [Android's native ActionBar from Titanium](https://gist.
 	</tr>
 	<tr>
 		<td><b>setActionButtons</td>
-		<td>Object containing 3 arrays: visible, inflater and Android menu.  Each array holds menu options for each button in the following format: <b>{icon:'icon.png',title: 'Caption',action: callback}</b></td>
+		<td>Object containing 3 arrays: visible, inflater and Android menu.  Each array holds menu options for each button in the following format: <b>{icon:'icon.png',title: 'Caption',action: Object}</b>.  Object contains 3 arrays: visible, inflater and androidmenu.  Each array contains a collection of objects with properties: title, icon and action.</td>
 	</tr>
 </table>
 

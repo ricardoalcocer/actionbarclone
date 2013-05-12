@@ -34,8 +34,8 @@ function Controller() {
         parentWindow = handle;
     }
     function setBackground(args) {
+        $.headerbar.backgroundImage = args.image ? args.image : WPATH("lightbg.png");
         $.headerbar.backgroundColor = args.color;
-        $.headerbar.backgroundImage = args.image;
         $.headerbar.backgroundRepeat = true;
     }
     function showBottomLine() {
@@ -72,7 +72,9 @@ function Controller() {
             var menu = e.menu;
             args.androidmenu.forEach(function(button) {
                 var menuItem = menu.add({
-                    title: button.title
+                    title: button.title,
+                    icon: "/ic_menu_copy_holo_light.png",
+                    showAsAction: Ti.Android.SHOW_AS_ACTION_NEVER
                 });
                 menuItem.addEventListener("click", button.action);
             });
@@ -119,7 +121,7 @@ function Controller() {
         color: "#000",
         font: {
             fontSize: "16dp",
-            fontWeight: "bold"
+            fontFamily: "Roboto-Thin"
         },
         height: Ti.UI.SIZE,
         width: Ti.UI.SIZE,

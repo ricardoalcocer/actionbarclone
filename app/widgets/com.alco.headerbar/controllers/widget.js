@@ -67,8 +67,9 @@ function setParentContainer(handle){
 }
 
 function setBackground(args){
+	(args.image)?$.headerbar.backgroundImage=args.image:$.headerbar.backgroundImage=WPATH('lightbg.png');
 	$.headerbar.backgroundColor=args.color;
-	$.headerbar.backgroundImage=args.image;
+	
 	$.headerbar.backgroundRepeat= true;
 }
 
@@ -117,7 +118,9 @@ function setActionButtons(args){
 			var menu = e.menu;
 			args.androidmenu.forEach(function(button){
 				var menuItem = menu.add({ 
-					title: button.title
+					title: button.title,
+					icon: '/ic_menu_copy_holo_light.png',
+					showAsAction : Ti.Android.SHOW_AS_ACTION_NEVER
 				});
 				menuItem.addEventListener("click", button.action);
 			})

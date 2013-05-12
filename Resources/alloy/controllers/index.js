@@ -73,7 +73,7 @@ function Controller() {
         color: "#6f6f6f"
     });
     $.headerbar.setBack(function() {
-        $.index.close();
+        alert("Clicked home");
     });
     $.headerbar.hideBottomLine();
     $.headerbar.showAngle();
