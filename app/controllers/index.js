@@ -2,6 +2,7 @@
 // setBlackAngle or setWhiteAngle
 // setBackground
 // setTitleColor 
+// 
 //$.headerbar.setTheme('black'); 
 
 // Start Configuration
