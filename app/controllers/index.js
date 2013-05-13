@@ -3,7 +3,7 @@
 // setBackground
 // setTitleColor 
 //$.headerbar.setTheme('black'); 
-
+// * 
 // Start Configuration
 $.headerbar.setParentContainer($.index);			// a reference to the window containing the widget
 $.headerbar.setBackground({							// background color of the bar
