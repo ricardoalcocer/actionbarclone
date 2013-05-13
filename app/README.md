@@ -201,6 +201,10 @@ You can set your tiapp.xml to use Android's native Holo theme using the followin
 
 Titanium does not expose some other important Android UI patterns, such as the [ViewPager](http://android-developers.blogspot.com/2011/08/horizontal-view-swiping-with-viewpager.html).  However, thanks to Titanium's capability of [creating native modules](http://docs.appcelerator.com/titanium/3.0/#!/guide/Titanium_Module_Concepts), we can use the [Android View Pager Module](https://marketplace.appcelerator.com/apps/2228?1837247646) by [@mudderman](https://twitter.com/mudderman) to add features such as [Scrolling Tabs](http://developer.android.com/design/building-blocks/tabs.html), which are very popular in Google-built apps.  You can read some [sample code here](https://github.com/mudderman/ViewPager-Module-Demo).
 
+## Contribuitors
+* Ricardo Alcocer (@ricardoalcocer)
+* Pull requests are accepeted and encouraged!
+
 ## To-do 
 
 * Implement menu that will open when the "inflater" is clicked

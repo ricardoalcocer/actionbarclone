@@ -10,7 +10,7 @@ $.headerbar.setParentContainer($.index);			// a reference to the window containi
 $.headerbar.setBackground({							// background color of the bar
 	color:'#cacaca'
 });
-//$.headerbar.setAppIcon('/appiconcopy.png'); 		// if no icon is povided, the apps default one will be used
+//$.headerbar.setAppIcon('/appiconcopy.png'); 		// if no icon is provided, the apps default one will be used
 $.headerbar.setBlackAngle();						// color of the angle
 $.headerbar.setTitle({								// the title of the containing window
 	text:'Window Title',
