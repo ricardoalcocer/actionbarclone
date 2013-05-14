@@ -209,6 +209,8 @@ Titanium does not expose some other important Android UI patterns, such as the [
 
 * Implement menu that will open when the "inflater" is clicked
 * Add pre-defined Light and Dark themes to match Android Holo
+* Add event listener on lib/buttons.js to cancel button press if finger is outside of the button area
+* Add tooltip when long-pressing action button
 
 
 ## Licenses
