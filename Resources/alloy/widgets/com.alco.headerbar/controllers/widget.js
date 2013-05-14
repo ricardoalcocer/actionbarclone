@@ -50,10 +50,11 @@ function Controller() {
     function setActionButtons(args) {
         args.visible && args.visible.forEach(function(button) {
             var payload = {
-                image: button.icon
+                image: button.icon,
+                action: button.action,
+                title: button.title
             };
-            var tbbutton = Widget.createController("button", payload).getView();
-            tbbutton.addEventListener("click", button.action);
+            var tbbutton = buttonFactory.getButton(payload);
             $.actionButtons.add(tbbutton);
         });
         if (args.inflater) {
@@ -61,7 +62,7 @@ function Controller() {
             var payload = {
                 image: WPATH("ic_menu_moreoverflow_normal_holo_light.png")
             };
-            var inflater = Widget.createController("button", payload).getView();
+            var inflater = buttonFactory.getButton(payload);
             args.inflater.forEach(function(button) {
                 menuoptions += button.title;
             });
@@ -80,7 +81,7 @@ function Controller() {
             });
         });
     }
-    var Widget = new (require("alloy/widget"))("com.alco.headerbar");
+    new (require("alloy/widget"))("com.alco.headerbar");
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
     arguments[0] ? arguments[0]["__parentSymbol"] : null;
     arguments[0] ? arguments[0]["$model"] : null;
@@ -151,6 +152,7 @@ function Controller() {
     _.extend($, $.__views);
     var backAction = null;
     var parentWindow = null;
+    var buttonFactory = require(WPATH("button"));
     $.appicon.backgroundImage = "/appicon.png";
     $.headerbar.addEventListener("click", function(evt) {
         evt.cancelBubble = true;

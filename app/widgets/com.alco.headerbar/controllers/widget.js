@@ -2,6 +2,8 @@ var backAction=null;
 var extraButtonAction=null;
 var parentWindow=null;
 
+var buttonFactory=require(WPATH('button'));
+
 // set default app icon, in case no icon is provided
 $.appicon.backgroundImage='/appicon.png'	
 
@@ -89,11 +91,11 @@ function setActionButtons(args){
 	if (args.visible){
 		args.visible.forEach(function(button){
 			var payload={
-				image:button.icon
+				image:button.icon,
+				action: button.action,
+				title: button.title
 			}
-			var tbbutton=Widget.createController('button',payload).getView();
-			
-			tbbutton.addEventListener('click',button.action);
+			var tbbutton=buttonFactory.getButton(payload);
 			$.actionButtons.add(tbbutton);
 		})
 	}
@@ -103,7 +105,8 @@ function setActionButtons(args){
 		var payload={
 			image: WPATH('ic_menu_moreoverflow_normal_holo_light.png')
 		}
-		var inflater=Widget.createController('button',payload).getView();
+		
+		var inflater=buttonFactory.getButton(payload);
 		args.inflater.forEach(function(button){
 			// here I gather all the menu options and build a dropdown menu
 			menuoptions+=button.title
