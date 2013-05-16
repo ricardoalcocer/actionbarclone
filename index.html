@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <link href='https://fonts.googleapis.com/css?family=Chivo:900' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print" />
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <title>ActionBarClone by ricardoalcocer</title>
+  </head>
+
+  <body>
+    <div id="container">
+      <div class="inner">
+
+        <header>
+          <h1>ActionBarClone</h1>
+          <h2>Appcelerator Alloy Widget that emulates Android's ActionBar functionality</h2>
+        </header>
+
+        <section id="downloads" class="clearfix">
+          <a href="https://github.com/ricardoalcocer/actionbarclone/zipball/master" id="download-zip" class="button"><span>Download .zip</span></a>
+          <a href="https://github.com/ricardoalcocer/actionbarclone/tarball/master" id="download-tar-gz" class="button"><span>Download .tar.gz</span></a>
+          <a href="https://github.com/ricardoalcocer/actionbarclone" id="view-on-github" class="button"><span>View on GitHub</span></a>
+        </section>
+
+        <hr>
+
+        <section id="main_content">
+          <h1>ActionBar Clone</h1>
+
+<h2>Summary</h2>
+
+<p>This widget for the Appcelerator Titanium Alloy MVC framework emulates Android's ActionBar.  This Widgets provide enough functinality to become a mini-framework to build Android Apps that are consistent with Android usability guidelines.</p>
+
+<h3>Example of ActionBar</h3>
+
+<p><img src="http://developer.android.com/images/ui/actionbar-stacked.png" alt=""></p>
+
+<p>Although you can access <a href="https://gist.github.com/ricardoalcocer/5339699">Android's native ActionBar from Titanium</a>, you still need a way to target pre 4.0 devices.  This Widget provides an easy way of ensuring that your Android App remains true to Android's usability guidelines regardless of the Android version, and providing easy-to-use theming capabilities to match your App's UI.</p>
+
+<h2>Usage</h2>
+
+<h3>Features</h3>
+
+<ul>
+<li>Tested on Android 2.2 thru 4.2, both phones and tablets</li>
+<li>Customizable icon</li>
+<li>Customizable background</li>
+<li>Customizable colors</li>
+<li>Can add "Action icons", options that will display upon clicking the "inflater" icon, and regular Android menus.</li>
+</ul><h3>Configuration options</h3>
+
+<table>
+<tr>
+<td><b>Method</b></td>
+        <td><b>Arguments</b></td>
+    </tr>
+<tr>
+<td><b>setParentContainer</b></td>
+        <td>Pointer to the Window object</td>
+    </tr>
+<tr>
+<td><b>setBackground</b></td>
+        <td>Dictionary with color property. Example: <b>{ color: '#000'}</b>
+</td>
+    </tr>
+<tr>
+<td><b>setBlackAngle</b></td>
+        <td>-</td>
+    </tr>
+<tr>
+<td><b>setWhiteAngle</b></td>
+        <td>-</td>
+    </tr>
+<tr>
+<td><b>showAngle</b></td>
+        <td>-</td>
+    </tr>
+<tr>
+<td><b>hideAngle</b></td>
+        <td>-</td>
+    </tr>
+<tr>
+<td><b>setTitle</b></td>
+        <td>Dictionary with text and color properties.  Example: <b>{ text: 'My Window',color: '#fff'}</b>
+</td>
+    </tr>
+<tr>
+<td><b>setBack</b></td>
+        <td>Instance of function to call when the back button is pressed.  If you want the button not to do anything, simply don't call this method.</td>
+    </tr>
+<tr>
+<td><b>hideBottomLine</b></td>
+        <td>-</td>
+    </tr>
+<tr>
+<td><b>showBottomLine</b></td>
+        <td>-</td>
+    </tr>
+<tr>
+<td><b>setActionButtons</b></td>
+        <td>Object containing 3 arrays: visible, inflater and Android menu.  Each array holds menu options for each button in the following format: <b>{icon:'icon.png',title: 'Caption',action: Object}</b>.  Object contains 3 arrays: visible, inflater and androidmenu.  Each array contains a collection of objects with properties: title, icon and action.</td>
+    </tr>
+</table><h3>Adding to your XML View</h3>
+
+<pre><code>&lt;Widget src="com.alco.headerbar" id="headerbar"/&gt; 
+</code></pre>
+
+<h3>Configuring in your controller</h3>
+
+<pre><code>// Start Configuration
+$.headerbar.setParentContainer($.index);            // a reference to the window containing the widget
+$.headerbar.setBackground({                         // background color of the bar
+    color:'#cacaca'
+});
+//$.headerbar.setAppIcon('/appiconcopy.png');       // if no icon is povided, the apps default one will be used
+$.headerbar.setBlackAngle();                        // color of the angle
+$.headerbar.setTitle({                              // the title of the containing window
+    text:'Window Title',
+    color:'#6f6f6f'
+});
+$.headerbar.setBack(function(){                     // if angle is shown, what will happen uppon click.  Default to closing containing window
+    $.index.close();
+});
+$.headerbar.hideBottomLine();                       // for Holo Dark
+$.headerbar.showAngle();                            // show or hide
+$.headerbar.setActionButtons(getExtraButtons());        // action buttons, inflater buttons and menu buttons
+// End Configuration
+
+
+// For clarity, I'm using a function to get the Buttons Object
+// In a cross-platform scenario you'd want to have your menu options returned
+// by a function so you can then decide where and how display them
+function getExtraButtons(){
+    return {
+        visible:[
+            {
+                icon:'/ic_menu_copy_holo_light.png',
+                title: 'Copy',
+                action: function (){
+                    alert('Copy');
+                }
+            },
+            {
+                icon:'/ic_menu_share_holo_light.png',
+                title: 'Share',
+                action: function (){
+                    alert('Share');
+                }
+            }],
+        inflater:[
+            {
+                title: 'Some Action #1',
+                action: function (){
+                    alert('action1');
+                }
+            },
+            {
+                title: 'Some Action #2',
+                action: function (){
+                    alert('action2');
+                }
+            }],
+        androidmenu:[
+            {
+                title: 'Settings',
+                action: function (){
+                    alert('Settings');
+                }
+            },
+            {
+                title: 'Help',
+                action: function (){
+                    alert('Help');
+                }
+            },
+            {
+                title: 'About',
+                action: function (){
+                    alert('About');
+                }
+            }
+        ]
+    }
+}
+</code></pre>
+
+<h2>Screenshots</h2>
+
+<h3>Portrait View - Android 4.2</h3>
+
+<p><img src="http://s17.postimg.org/71rndsl4v/Screen_Shot_2013_05_10_at_1_07_02_PM.png" alt=""></p>
+
+<h3>Landscape View - Android 4.2</h3>
+
+<p><img src="http://s21.postimg.org/jqpabwhuf/Screen_Shot_2013_05_09_at_3_08_01_PM.png" alt=""></p>
+
+<h3>Landscape View - Android 4.2 Tablet</h3>
+
+<p><img src="http://s10.postimg.org/3yva8lt09/Screen_Shot_2013_05_09_at_3_16_36_PM.png" alt=""></p>
+
+<h3>Portrait View - Android 2.2</h3>
+
+<p><img src="http://s23.postimg.org/r7n0arfxn/Screen_Shot_2013_05_09_at_3_13_48_PM.png" alt=""></p>
+
+<h2>Tips</h2>
+
+<h3>Using Android's Holo Theme</h3>
+
+<p>You can set your tiapp.xml to use Android's native Holo theme using the following syntax</p>
+
+<pre><code>&lt;android xmlns:android="http://schemas.android.com/apk/res/android"&gt;
+    &lt;tool-api-level&gt;14&lt;/tool-api-level&gt;
+    &lt;manifest&gt;
+        &lt;application android:theme="@android:style/Theme.Holo.Light"&gt;&lt;/application&gt;
+        &lt;!-- You could also use @android:style/Theme.Holo --&gt;
+    &lt;/manifest&gt;
+&lt;/android&gt;
+</code></pre>
+
+<h3>Adding even more Android native UI patterns to your Titanium Apps</h3>
+
+<p>Titanium does not expose some other important Android UI patterns, such as the <a href="http://android-developers.blogspot.com/2011/08/horizontal-view-swiping-with-viewpager.html">ViewPager</a>.  However, thanks to Titanium's capability of <a href="http://docs.appcelerator.com/titanium/3.0/#!/guide/Titanium_Module_Concepts">creating native modules</a>, we can use the <a href="https://marketplace.appcelerator.com/apps/2228?1837247646">Android View Pager Module</a> by <a href="https://twitter.com/mudderman">@mudderman</a> to add features such as <a href="http://developer.android.com/design/building-blocks/tabs.html">Scrolling Tabs</a>, which are very popular in Google-built apps.  You can read some <a href="https://github.com/mudderman/ViewPager-Module-Demo">sample code here</a>.</p>
+
+<h2>Contribuitors</h2>
+
+<ul>
+<li>Ricardo Alcocer (<a href="https://github.com/ricardoalcocer" class="user-mention">@ricardoalcocer</a>)</li>
+<li>Pull requests are accepeted and encouraged!</li>
+</ul><h2>To-do</h2>
+
+<ul>
+<li>Implement menu that will open when the "inflater" is clicked</li>
+<li>Add pre-defined Light and Dark themes to match Android Holo</li>
+<li>Add event listener on lib/buttons.js to cancel button press if finger is outside of the button area</li>
+<li>Add tooltip when long-pressing action button</li>
+</ul><h2>Licenses</h2>
+
+<p>This project is licensed under the Apache Public License (Version 2). Please see the LICENSE.txt file for the full license.</p>
+
+<p>Appcelerator, Appcelerator Titanium and associated marks and logos are 
+trademarks of Appcelerator, Inc. </p>
+
+<p>Titanium is Copyright (c) 2008-2012 by Appcelerator, Inc. All Rights Reserved.</p>
+
+<p>Titanium is licensed under the Apache Public License (Version 2). Please
+see the LICENSE file for the full license.</p>
+        </section>
+
+        <footer>
+          ActionBarClone is maintained by <a href="https://github.com/ricardoalcocer">ricardoalcocer</a><br>
+          This page was generated by <a href="http://pages.github.com">GitHub Pages</a>. Tactile theme by <a href="http://twitter.com/jasonlong">Jason Long</a>.
+        </footer>
+
+        
+      </div>
+    </div>
+  </body>
+</html>
