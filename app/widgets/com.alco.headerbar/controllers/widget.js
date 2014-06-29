@@ -147,4 +147,5 @@ exports.showAngle=showAngle;
 exports.setBlackAngle=setBlackAngle;
 exports.setWhiteAngle=setWhiteAngle;
 exports.setTitle=setTitle;
+exports.setTitleAction=setTitleAction;
 exports.setBack=setBack;
