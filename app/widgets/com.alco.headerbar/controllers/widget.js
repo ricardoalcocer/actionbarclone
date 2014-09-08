@@ -38,6 +38,10 @@ function setTitle(args){
 	$.headertitle.color=args.color;
 }
 
+function setTitleAction(action){
+	$.headertitle.addEventListener('click',action);
+}
+
 function setBack(action){
 	backAction=action;
 }
@@ -143,4 +147,5 @@ exports.showAngle=showAngle;
 exports.setBlackAngle=setBlackAngle;
 exports.setWhiteAngle=setWhiteAngle;
 exports.setTitle=setTitle;
+exports.setTitleAction=setTitleAction;
 exports.setBack=setBack;
